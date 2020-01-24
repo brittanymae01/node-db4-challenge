@@ -17,4 +17,8 @@ function getShoppingList(recipe_id) {
     .where("recipe_ingredients.recipe_id", recipe_id);
 }
 
-function getInstructions(recipe_id) {}
+function getInstructions(recipe_id) {
+  return db("recipes")
+    .select("recipes.Instructions")
+    .where("recipes.id", recipe_id);
+}
