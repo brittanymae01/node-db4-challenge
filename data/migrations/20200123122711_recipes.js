@@ -3,10 +3,10 @@ exports.up = function(knex) {
     .createTable("recipes", tbl => {
       tbl.increments();
       tbl
-        .string("name", 128)
+        .string("Name", 128)
         .notNullable()
         .index();
-      tbl.string("instruction").notNullable();
+      tbl.string("Instructions").notNullable();
     })
     .createTable("ingredients", tbl => {
       tbl.increments();
@@ -14,7 +14,6 @@ exports.up = function(knex) {
         .string("IngredientName", 128)
         .notNullable()
         .index();
-      tbl.float("Quantity").notNullable();
     })
     .createTable("recipe_ingredients", tbl => {
       tbl.increments();
@@ -36,6 +35,8 @@ exports.up = function(knex) {
         .inTable("ingredients")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
+
+      tbl.float("Quantity").notNullable();
     });
 };
 
